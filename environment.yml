@@ -1,0 +1,11 @@
+name: project_environment
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - flake8
+  - pytest
+  - numpy
+  - pandas
+  - matplotlib
