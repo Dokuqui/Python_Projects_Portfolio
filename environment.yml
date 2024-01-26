@@ -6,6 +6,4 @@ dependencies:
   - pip
   - flake8
   - pytest
-  - numpy
-  - pandas
   - matplotlib
