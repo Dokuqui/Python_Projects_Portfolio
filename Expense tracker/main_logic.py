@@ -1,6 +1,5 @@
 from datetime import datetime
 from databases import conn, cursor
-# from gui import create_main_window
 
 
 def add_deposit(amount, category, description=""):
@@ -44,17 +43,11 @@ def add_expense(amount, category, description=""):
 
 
 def view_deposit():
-    """View all deposit in the database."""
+    """View all deposits in the database."""
     cursor.execute('SELECT * FROM deposit')
-    deposit = cursor.fetchall()
+    deposits = cursor.fetchall()
 
-    if not deposit:
-        print("No deposits found.")
-    else:
-        print("ID | Amount | Category | Description | Date")
-        print("------------------------------------------")
-        for deposits in deposit:
-            print(f"{deposits[0]} | {deposits[1]} | {deposits[2]} | {deposits[3]} | {deposits[4]}")
+    return deposits
 
 
 def view_expenses():
@@ -62,13 +55,8 @@ def view_expenses():
     cursor.execute('SELECT * FROM expenses')
     expenses = cursor.fetchall()
 
-    if not expenses:
-        print("No expenses found.")
-    else:
-        print("ID | Amount | Category | Description | Date")
-        print("------------------------------------------")
-        for expense in expenses:
-            print(f"{expense[0]} | {expense[1]} | {expense[2]} | {expense[3]} | {expense[4]}")
+    return expenses
+
 
 
 def get_total_deposit():
@@ -90,13 +78,6 @@ def view_wallet_balance():
     cursor.execute('SELECT balance FROM wallet LIMIT 1')
     balance = cursor.fetchone()[0]
     return balance if balance else 0.0
-
-
-def deposit_to_wallet(amount):
-    """Deposit money into the wallet."""
-    cursor.execute('UPDATE wallet SET balance = balance + %s', (amount,))
-    conn.commit()
-    print("Deposit successful!")
 
 
 def expense_from_wallet(amount):
