@@ -6,7 +6,7 @@ import bcrypt  # importing lib for hash password
 
 # Create a MySQL database connection
 conn = mysql.connector.connect(
-    host="localhost",
+    host="YOUR_HOST_HERE",
     user="YOUR_USER",
     password="YOUR_PASSWORD",
     database="YOUR_DATABASES"

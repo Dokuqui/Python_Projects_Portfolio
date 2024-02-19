@@ -1,8 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 from databases import conn, cursor, register_user, login_user, initialize_wallet
-from main_logic import add_deposit, add_expense, view_deposit, get_total_expenses, view_expenses, view_wallet_balance, get_total_deposit
+from main_logic import (add_deposit, add_expense, view_deposit, get_total_expenses, view_expenses,
+                        view_wallet_balance, get_total_deposit, handle_currency_conversion)
 from csv_export import export_expenses, export_deposits
+from config import API_KEY
 
 # Create a tkinter window
 window = tk.Tk()
@@ -138,6 +140,51 @@ def handle_view_wallet_balance():
 def update_wallet_balance_label():
     wallet_balance = view_wallet_balance()
     wallet_balance_label.config(text=f"Wallet Balance: {wallet_balance:.2f}")
+
+# Function to handle currency conversion
+def handle_convert_currency():
+    base_currency = entry_base_currency.get()
+    target_currency = entry_target_currency.get()
+    amount = float(entry_amount.get())
+
+    converted_amount = handle_currency_conversion(base_currency, target_currency, amount, API_KEY)
+    if converted_amount is not None:
+        result_text = f"{amount} {base_currency} = {converted_amount:.2f} {target_currency}"
+        label_result.config(text=result_text)
+        messagebox.showinfo("Currency Conversion", result_text)
+    else:
+        messagebox.showerror("Currency Conversion", "Failed to convert currency. Please check your inputs.")
+
+    # Clear entry fields after conversion
+    entry_base_currency.delete(0, "end")
+    entry_target_currency.delete(0, "end")
+    entry_amount.delete(0, "end")
+
+# Create GUI elements for currency conversion
+label_base_currency = tk.Label(window, text="Base Currency:")
+label_base_currency.pack(side="top", padx=10, pady=5)
+
+entry_base_currency = tk.Entry(window)
+entry_base_currency.pack(side="top", padx=10, pady=5)
+
+label_target_currency = tk.Label(window, text="Target Currency:")
+label_target_currency.pack(side="top", padx=10, pady=5)
+
+entry_target_currency = tk.Entry(window)
+entry_target_currency.pack(side="top", padx=10, pady=5)
+
+label_amount = tk.Label(window, text="Amount:")
+label_amount.pack(side="top", padx=10, pady=5)
+
+entry_amount = tk.Entry(window)
+entry_amount.pack(side="top", padx=10, pady=5)
+
+button_convert_currency = tk.Button(window, text="Convert Currency", command=handle_convert_currency)
+button_convert_currency.pack(side="top", padx=10, pady=5)
+
+# Create a label to display the converted amount
+label_result = tk.Label(window, text="", padx=10, pady=5)
+label_result.pack(side="top")
 
 # Create and style labels
 label_frame = tk.LabelFrame(window, text="Expense Tracker", bg="#f0f0f0", padx=10, pady=10)

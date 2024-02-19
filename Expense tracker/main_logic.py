@@ -1,5 +1,6 @@
 from datetime import datetime
 from databases import conn, cursor
+from currency_converter import get_exchange_rate, currency_converter
 
 
 def add_deposit(amount, category, description=""):
@@ -90,3 +91,11 @@ def expense_from_wallet(amount):
         cursor.execute('UPDATE wallet SET balance = balance - %s', (amount,))
         conn.commit()
         print("Expense successful!")
+
+def handle_currency_conversion(base_currency, target_currency, amount, api_key):
+    exchange_rate = get_exchange_rate(base_currency, target_currency, api_key)
+    if exchange_rate is not None:
+        converted_amount = currency_converter(amount, exchange_rate)
+        return converted_amount
+    else:
+        return None
