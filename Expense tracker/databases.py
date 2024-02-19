@@ -7,9 +7,9 @@ import bcrypt  # importing lib for hash password
 # Create a MySQL database connection
 conn = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="Krys1234!",
-    database="expense_tracker"
+    user="YOUR_USER",
+    password="YOUR_PASSWORD",
+    database="YOUR_DATABASES"
 )
 cursor = conn.cursor()
 
@@ -18,36 +18,29 @@ cursor = conn.cursor()
 logging.basicConfig(filename='expense_tracker.log', level=logging.INFO)
 
 
-def register_user():
+def register_user(username, password):
     """Register a new user."""
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")  # Use getpass to hide the password
     hashed_password = hash_password(password)
 
     try:
         # Check if the username is already taken
         cursor.execute('SELECT COUNT(*) FROM users WHERE username = %s', (username,))
         if cursor.fetchone()[0] > 0:
-            print("Error: This username is already taken.")
-            return
+            return False, "This username is already taken."
 
         # Add the new user to the database
         cursor.execute('INSERT INTO users (username, password) VALUES (%s, %s)', (username, hashed_password))
         conn.commit()
         logging.info("User registered: %s", username)
-        print("Registration successful!")
+        return True, "Registration successful!"
 
     except mysql.connector.Error as err:
         logging.error("MySQL Error during registration: %s", err)
-        print("Error occurred during registration. Check the logs for details.")
+        return False, "An error occurred during registration. Check the logs for details."
 
 
-def login_user():
+def login_user(username, password):
     """Log in an existing user."""
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")  # Use getpass to hide the password
-    hashed_password = hash_password(password)
-
     try:
         # Retrieve the hashed password from the database for the given username
         cursor.execute('SELECT password FROM users WHERE username = %s', (username,))
@@ -55,13 +48,14 @@ def login_user():
 
         if stored_password and check_password(password, stored_password[0]):
             logging.info("User logged in: %s", username)
-            print("Login successful!")
+            return True, "Login successful!"
         else:
-            print("Error: Incorrect username or password.")
+            return False, "Incorrect username or password."
 
     except mysql.connector.Error as err:
         logging.error("MySQL Error during login: %s", err)
-        print("Error occurred during login. Check the logs for details.")
+        return False, "An error occurred during login. Check the logs for details."
+
 
 
 # Function to hash passwords during registration
@@ -74,8 +68,10 @@ def hash_password(password):
 
 # Function to check hashed password during login
 def check_password(input_password, hashed_password):
-    """Check if a password"""
-    return bcrypt.checkpw(input_password.encode('utf-8'), hashed_password)
+    """Check if the input password matches the hashed password."""
+    input_password = input_password.encode('utf-8')  # Encode input_password as bytes
+    hashed_password = hashed_password.encode('utf-8')  # Encode hashed_password as bytes
+    return bcrypt.checkpw(input_password, hashed_password)
 
 
 def initialize_wallet():
