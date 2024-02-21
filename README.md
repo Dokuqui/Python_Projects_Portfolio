@@ -1,6 +1,6 @@
 # Python_Projects
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+[![Python](https://img.shields.io/badge/Python-Used-blue.svg)](https://www.python.org/)
 
 ![Python](https://www.freecodecamp.org/news/content/images/2020/05/Python-language.png)
 
