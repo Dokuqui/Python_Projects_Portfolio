@@ -36,40 +36,48 @@ Last Updated: [19/02/2024]
  - # Currency List
  - - The following table lists the available currencies along with their corresponding codes and names:
 
-| Code | Name                   |
-|------|------------------------|
-| EUR  | Euro                   |
-| USD  | US Dollar              |
-| JPY  | Japanese Yen           |
-| BGN  | Bulgarian Lev          |
-| CZK  | Czech Republic Krona   |
-| DKK  | Danish Krone           |
-| GBP  | British Pound Sterling |
-| HUF  | Hungarian Forint       |
-| PLN  | Polish Zloty           |
-| RON  | Romanian Leu           |
-| SEK  | Swedish Krona          |
-| CHF  | Swiss Franc            |
-| ISK  | Icelandic Króna        |
-| NOK  | Norwegian Krone        |
-| HRK  | Croatian Kuna          |
-| RUB  | Russian Ruble          |
-| TRY  | Turkish Lira           |
-| AUD  | Australian Dollar      |
-| BRL  | Brazilian Real         |
-| CAD  | Canadian Dollar        |
-| CNY  | Chinese Yuan           |
-| HKD  | Hong Kong Dollar       |
-| IDR  | Indonesian Rupiah      |
-| ILS  | Israeli New Sheqel     |
-| INR  | Indian Rupee           |
-| KRW  | South Korean Won       |
-| MXN  | Mexican Peso           |
-| MYR  | Malaysian Ringgit      |
-| NZD  | New Zealand Dollar     |
-| PHP  | Philippine Peso        |
-| SGD  | Singapore Dollar       |
-| THB  | Thai Baht              |
-| ZAR  | South African Rand     |
+|   Code |           Name           |
+|-------:|:------------------------:|
+|    EUR |           Euro           |
+|    USD |        US Dollar         |
+|    JPY |       Japanese Yen       |
+|    BGN |      Bulgarian Lev       |
+|    CZK |   Czech Republic Krona   |
+|    DKK |       Danish Krone       |
+|    GBP |  British Pound Sterling  |
+|    HUF |     Hungarian Forint     |
+|    PLN |       Polish Zloty       |
+|    RON |       Romanian Leu       |
+|    SEK |      Swedish Krona       |
+|    CHF |       Swiss Franc        |
+|    ISK |     Icelandic Króna      |
+|    NOK |     Norwegian Krone      |
+|    HRK |      Croatian Kuna       |
+|    RUB |      Russian Ruble       |
+|    TRY |       Turkish Lira       |
+|    AUD |    Australian Dollar     |
+|    BRL |      Brazilian Real      |
+|    CAD |     Canadian Dollar      |
+|    CNY |       Chinese Yuan       |
+|    HKD |     Hong Kong Dollar     |
+|    IDR |    Indonesian Rupiah     |
+|    ILS |    Israeli New Sheqel    |
+|    INR |       Indian Rupee       |
+|    KRW |     South Korean Won     |
+|    MXN |       Mexican Peso       |
+|    MYR |    Malaysian Ringgit     |
+|    NZD |    New Zealand Dollar    |
+|    PHP |     Philippine Peso      |
+|    SGD |     Singapore Dollar     |
+|    THB |        Thai Baht         |
+|    ZAR |    South African Rand    |
+| -----: | :----------------------: |
+
+- - -
+
+* Youtube Download
+  - Created to download video from youtube by url. To download need to put also folder destination.<br> Also exist possibility to upload only audio from video.
+
+- - -
 
 © 2024 `Illia Semenov`. All rights reserved.
