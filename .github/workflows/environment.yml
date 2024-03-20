@@ -7,3 +7,5 @@ dependencies:
   - flake8
   - pytest
   - matplotlib
+  - pytube
+  - tkinter
