@@ -1,2 +1,4 @@
-
 .idea/inspectionProfiles/profiles_settings.xml
+venv
+.pylintrc
+oryx-build-commands.txt
