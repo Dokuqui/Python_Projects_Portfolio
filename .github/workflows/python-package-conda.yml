@@ -18,9 +18,6 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         echo $CONDA/bin >> $GITHUB_PATH
-    - name: Delete existing conda environment
-      run: |
-        conda env remove --name base --yes
     - name: Create Conda env
       run: |
         conda env create --file .github/workflows/environment.yml --name base
