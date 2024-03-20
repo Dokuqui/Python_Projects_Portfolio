@@ -20,7 +20,7 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Create Conda env
       run: |
-        conda env create --file environment.yml --name base
+        conda env create --file ../.github/workflows/environment.yml --name base
     - name: Activate Conda env
       run: |
         conda activate base
