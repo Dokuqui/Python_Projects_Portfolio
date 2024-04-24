@@ -82,7 +82,7 @@ This is small repository with different python projects and apps which I will ma
 
 - - -
 
-* Youtube Download
+* Book scrap app
   - Created to scrap data on web-site with use of selenium and export it to csv file.
 
 - - -
